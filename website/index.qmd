@@ -15,3 +15,8 @@ This study aims to address the growing challenge of chronic absenteeism by apply
 Previous research primarily used machine learning techniques to predict chronic absenteeism at the student level. One study applied k-means clustering and Naive Bayes models to group students by risk level, ultimately achieving 90% accuracy by focusing on clearly defined attendance patterns and highlighting the importance of peer relationships and positive reinforcement (@bowen2022revealing). Another study used Extreme Gradient Boosting (XGBoost) with SMOTE to improve early warning systems, outperforming traditional logistic regression models and demonstrating the potential for more targeted, data-driven interventions (@wu2024leveraging). A third study focused on autistic students, using deep learning models such as LSTM and MLP to forecast attendance with high accuracy, identifying behavior-related factors as key predictors (@jarbou2022deep).
 
 While these studies have shown the promise of machine learning at the student level, this project shifts the focus to the district level - aiming to predict which school districts are most at risk of high chronic absenteeism and to identify the most influential factors driving these predictions.
+
+
+
+
+The Github repository hosting all code for this project can be found [here](https://github.com/dcorc7/Predicting-Chronic-Absenteeism-In-US-School-Districts)
