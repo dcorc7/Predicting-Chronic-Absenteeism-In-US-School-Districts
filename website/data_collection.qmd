@@ -1,0 +1,39 @@
+---
+title: Data & Feature Engineering
+---
+
+The datasets used in this research were drawn from multiple sources, all specific to the 2022–2023 school year. Information on chronic absenteeism by school district was obtained from the U.S. Department of Education. Each record in this dataset represented a single school district and included the district's name, state, Local Education Agency ID (LEAID), total student enrollment, number of chronically absent students, and the percentage of students classified as chronically absent (calculated as the ratio of the latter two values). The dataset also included demographic breakdowns of chronically absent students by race, gender, economic status, disability status, and English language proficiency, offering a more nuanced view of absenteeism patterns. Poverty statistics at the school district level were sourced from the U.S. Census Bureau’s Small Area Income and Poverty Estimates (SAIPE) dataset. This dataset included each district’s name, state postal abbreviation, state FIPS code, District ID, estimated K–12 population, and estimated number of K–12 students living in poverty. Racial demographics for each school district were retrieved from the National Center for Education Statistics (NCES), which provided counts of American Indian, Asian, Hispanic, Black, White, Hawaiian, and other racial groups, along with the district’s Agency ID (equivalent to LEAID). Finally, financial data were also obtained from NCES and included a range of district-level financial metrics, organized by LEAID. For this study, the analysis focused on seven key variables: total federal revenue, total state revenue, total local revenue, total expenditures, total salaries, total employee benefits, and expenditure per student.
+
+Information gathered from these datasets demonstrates predictive power regarding chronic absenteeism. Specifically, since demographic data (including race, sex, and economic well-being) was used to predict chronic absenteeism among individual third graders, the team hypothesized that similar information could be generalized to the school district level to help address the proposed research questions (@wu2024leveraging). Although none of the studies reviewed incorporated financial data, the team identified these features as potentially strong predictors. The reasoning is that wealthier districts have access to resources that less affluent districts may not have. Additionally, school districts that offer higher salaries and better benefits to their staff may foster more supportive environments that encourage student attendance. This study contributes to the existing literature by incorporating financial data, a factor previously unexplored in this context.
+
+The various datasets were consolidated into a single comprehensive dataset by merging on the Local Education Agency ID (LEAID). Most of the datasets already included the LEAID; however, the poverty-specific dataset from SAIPE did not. Fortunately, the LEAID could be constructed by combining the state FIPS code and the district ID for each row. In every LEAID, the first one or two digits represent the state FIPS code, while the remaining digits correspond to the district ID. By inserting the appropriate number of leading zeros between these components, a standardized LEAID was generated for each district in the poverty dataset. Once a LEAID column was present in all datasets, they were merged programmatically to form one unified dataset suitable for machine learning analysis. Each row in the final dataset represented a single school district, containing all the demographic, financial, and absenteeism-related features described earlier.
+
+Upon further inspection of the data, the team noticed that demographic features related to the exact counts of students could not be used, as they were perfectly correlated with the target. To avoid data leakage and overfitting from features that encode the label via aggregation (e.g., chronically absent counts), we retained only proportion-based demographic variables. The final set of variables used in modeling can be found below in Table 1.
+
+\begingroup
+\small
+
+| **Variable Name** | **Description** |
+|---------------------------|---------------------------------------------|
+| `high_absenteeism` | Binary variable: 1 if chronic absenteeism ≥ 23.6%, 0 otherwise |
+| `high_absenteeism_doe` | Binary variable: 1 if chronic absenteeism ≥ 28% (Dept. of Education threshold) |
+| `absenteeism_class` | Multi-class label: 1 = Low, 2 = Medium, 3 = High risk |
+| `total_students` | Total number of students in the district |
+| `american_indian_alaska_native_pct` | \% of students identifying as American Indian or Alaska Native |
+| `asian_pacific_islander_pct` | \% of students identifying as Asian or Pacific Islander |
+| `hispanic_pct` | \% of students identifying as Hispanic |
+| `black_african_american_pct` | \% of students identifying as Black or African American |
+| `white_pct` | \% of students identifying as White |
+| `hawaiian_pacific_islander_pct` | \% of students identifying as Native Hawaiian or Pacific Islander |
+| `student_poverty_ratio` | Proportion of students from low-income backgrounds |
+| `total_federal_revenue` | Total federal revenue received by the district |
+| `total_state_revenue` | Total state revenue received by the district |
+| `total_local_revenue` | Total local revenue received by the district |
+| `total_expenditures` | Total expenditures by the district |
+| `total_salaries` | Total amount spent on salaries |
+| `total_employee_benefits` | Total amount spent on employee benefits |
+| `expenditures_per_student` | Average amount spent per student in the district |
+
+: Variables used in chronic absenteeism modeling. {#tbl-features tbl-cap="School district variables and their descriptions."}
+
+\endgroup
