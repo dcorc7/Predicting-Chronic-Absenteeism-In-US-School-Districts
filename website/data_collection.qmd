@@ -37,3 +37,5 @@ Upon further inspection of the data, the team noticed that demographic features 
 : Variables used in chronic absenteeism modeling. {#tbl-features tbl-cap="School district variables and their descriptions."}
 
 \endgroup
+
+You can download all required data [**here**](https://drive.google.com/uc?export=download&id=1HdMoTEXhGsZiUtnqeF6Q-VM1WeC_f5Tk).

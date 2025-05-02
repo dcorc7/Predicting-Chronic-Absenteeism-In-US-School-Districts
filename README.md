@@ -2,13 +2,6 @@
 
 This project explores machine learning models to predict high absenteeism rates in U.S. school districts, using a combination of demographic, poverty, financial, and school characteristic data. Models were compared in terms of predictive power, interpretability, and handling of class imbalance.
 
-## Team
-**Project Group 14**
-- Memeber 1 - Chase Clemence
-- Memeber 2 - David Corcoran
-- Memeber 3 - Gentry Lamb
-- Memeber 4 - Adam Stein
-
 ## Repository Structure
 
 ```
