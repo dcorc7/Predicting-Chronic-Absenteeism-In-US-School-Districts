@@ -30,7 +30,7 @@ In addition to the accuracy, precision, recall, and F1 score, the model's perfor
 
 :::{.columns}
 ::: {.column width="50%"}
-![Neural Network Binary Confusion Matrix using `high_absenteeism` target](./img/nn-binary-confusion-matrix.png.png){width="3.6in"}
+![Neural Network Binary Confusion Matrix using `high_absenteeism` target](./img/nn-binary-confusion-matrix.png){width="3.6in"}
 :::
 
 ::: {.column width="50%"}

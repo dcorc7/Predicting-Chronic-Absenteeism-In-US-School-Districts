@@ -322,11 +322,22 @@ Table&nbsp;1: Key Metrics of models used to classify districts.
 <p>The binary classification neural network model demonstrated promising results in classifying school districts based on absenteeism levels, with a focus on distinguishing between low and high absenteeism. After training for 33 epochs, the model achieved a final test loss of 0.5342. The model’s hyperparameters were manually tuned through grid search for optimal performance, returning an optimal model with 3 hidden layers each with a hidden layer size of 128 neurons, a dropout rate of 0.3, and the use of the RMSprop optimizer with a learning rate of 0.001. Despite these efforts, the model still exhibits room for improvement, particularly in its recall for identifying high absenteeism districts.</p>
 <p>The model’s accuracy, precision, recall, and F1 score can all be derived from the confusion matrix in Figure 8. The accuracy of the model was 0.7305, meaning that 73.05% of all predictions were correct. While this indicates that the model is relatively accurate in its overall predictions, accuracy alone may not fully capture the model’s effectiveness, especially in a project where the classes are imbalanced. Because the majority of districts have low absenteeism, a model that predicts low absenteeism for all districts could achieve a high accuracy score, despite failing to identify high absenteeism cases. The precision of the model was 0.7600, suggesting that when the model predicts a district to have high absenteeism, it is correct 76% of the time. This is a strong result in contexts where false positives are undesirable. In this case, the model is relatively reliable when it signals a district as having high absenteeism. However, the model’s recall was 0.5047, meaning that it correctly identified only 50.47% of the districts with high absenteeism. This indicates that the model misses nearly half of the actual high absenteeism districts, which is a significant shortcoming if the goal is to identify as many high absenteeism cases as possible for timely intervention. The F1 score of the model was 0.6066, reflecting a moderate balance between precision and recall. This score suggests that while the model performs reasonably well in terms of both metrics, there is room for improvement, particularly in increasing recall to capture more of the high absenteeism districts without sacrificing too much precision.</p>
 <p>In addition to the accuracy, precision, recall, and F1 score, the model’s performance was also assessed using the Area Under the Receiver Operating Characteristic (AUC-ROC) Curve, which was found to be 0.815, as shown in Figure 1. The AUC provides a measure of the model’s ability to distinguish between the two classes, high and low absenteeism districts in our case. A value of 0.815 indicates that the model has a strong ability to distinguish the two classes, and a high likelihood of ranking a randomly chosen high absenteeism district higher than a randomly chosen low absenteeism district.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./img/nn-binary-confusion-matrix.png.png" class="img-fluid figure-img" style="width:3.6in"></p>
+<figcaption>Neural Network Binary Confusion Matrix using <code>high_absenteeism</code> target</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./img/nn-roc.png" class="img-fluid figure-img" style="width:3.6in"></p>
 <figcaption>Neural Network ROC Curve using <code>high_absenteeism</code> target</figcaption>
 </figure>
+</div>
+</div>
 </div>
 <p>While the binary classification model displayed a solid performance in predicting absenteeism rates, its ability to identify all high absenteeism districts is limited. Future improvements could focus on enhancing recall, possibly by adjusting the decision threshold or exploring different model architectures, to better detect high absenteeism districts that require intervention.</p>
 <p>The multiclass classification neural network model demonstrated modest results in classifying school districts into low, medium, and high absenteeism categories. After training for 18 epochs, the model achieved a final validation loss of 0.9457. After tuning the model’s hyperparameters, the best-performing configuration utilized three hidden layers of 256 neurons each, a dropout rate of 0.3, and the RMSprop optimizer at a learning rate of 0.001.</p>
