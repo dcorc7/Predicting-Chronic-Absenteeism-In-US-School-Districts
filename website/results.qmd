@@ -28,7 +28,7 @@ The model's accuracy, precision, recall, and F1 score can all be derived from th
 
 In addition to the accuracy, precision, recall, and F1 score, the model's performance was also assessed using the Area Under the Receiver Operating Characteristic (AUC-ROC) Curve, which was found to be 0.815, as shown in Figure 1. The AUC provides a measure of the model's ability to distinguish between the two classes, high and low absenteeism districts in our case. A value of 0.815 indicates that the model has a strong ability to distinguish the two classes, and a high likelihood of ranking a randomly chosen high absenteeism district higher than a randomly chosen low absenteeism district.
 
-![Neural Network ROC Curve using `high_absenteeism` target](../img/nn-roc.png){width="3.6in"}
+![Neural Network ROC Curve using `high_absenteeism` target](./img/nn-roc.png){width="3.6in"}
 
 While the binary classification model displayed a solid performance in predicting absenteeism rates, its ability to identify all high absenteeism districts is limited. Future improvements could focus on enhancing recall, possibly by adjusting the decision threshold or exploring different model architectures, to better detect high absenteeism districts that require intervention.
 
@@ -36,7 +36,7 @@ The multiclass classification neural network model demonstrated modest results i
 
 The model's accuracy, precision, recall, and F1 score can all be derived from the confusion matrix in Figure 2. In terms of overall performance, the model's overall accuracy was 0.5523, indicating that 55.23% of the model's predictions were correct. While this demonstrates some predictive capability, it also highlights challenges posed by class imbalances, where the model may struggle with less dominant absenteeism categories. The model achieved a precision score of 0.5673, suggesting that when it predicts a district's absenteeism level, it is correct 56.73% of the time. This indicates a moderate ability for the model to avoid false positives. With a recall of 0.5523, the model successfully identified 55.23% of the true absenteeism cases across all classes. This metric highlights the model's limitations in capturing all relevant instances, particularly with the medium absenteeism bin. Finally, the model's F1 score of 0.5389 reflects a balance between precision and recall. This metric suggests that while the model is functional, it could benefit from adjustments to better address the complexities of the data.
 
-![Confusion Matrix for Multi-Class Classification using a Neural Network](../img/nn-multi-confusion-matrix.png){width="3.6in"}
+![Confusion Matrix for Multi-Class Classification using a Neural Network](./img/nn-multi-confusion-matrix.png){width="3.6in"}
 
 These results highlight the need for enhancements in feature engineering and possibly exploring alternative model architectures to improve overall multi-class classification performance.
 
@@ -46,11 +46,11 @@ Two LDA models were trained to predict school districts with higher-than-average
 
 The QDA model was trained using all numeric predictors with the intent to predict the binary high absenteeism variable. The same 80/20 train-test split and 10-fold cross-validation applied to the LDA models was applied here, yielding an accuracy of 63.8%. This model has a high sensitivity of 0.924 while having a very low specificity of 0.237. This shows that the QDA model performs poorly when predicting high absenteeism schools, but it does better predict lower absenteeism schools. Overall, the QDA model performs worse than both LDA models, suggesting that it overfits the training data. When comparing all the models, their relative AUC performance when leveraging a ROC plot is seen in Figure 3.
 
-![ROC Curve using `high_absenteeism` target](../img/lda-qda-roc.png){width="3.6in"}
+![ROC Curve using `high_absenteeism` target](./img/lda-qda-roc.png){width="3.6in"}
 
 When basing predictions on the Department of Education's average chronic absenteeism statistic (28%) the models improved. The first LDA model, once again using all features as well as the same train-test split and cross-validation technique, achieved an accuracy of 73.5%. Its sensitivity was .918 while its specificity was 0.295. The feature-selection LDA model achieved an accuracy of 72.9%. Its sensitivity and specificity were similar to the first, being 0.919 and 0.269 respectively. Finally, the QDA model resulted in an accuracy of 72.5%, having a slightly higher specificity at 0.930 and a lower specificity at 0.229. Figure 4 compares their relative performance based on AUC.
 
-![ROC Curve using `high_absenteeism_doe` target](../img/lda-qda-roc-doe.png){width="3.6in"}
+![ROC Curve using `high_absenteeism_doe` target](./img/lda-qda-roc-doe.png){width="3.6in"}
 
 The remaining models were less successful in predicting the multi-class classification variable. The first LDA model, which used all numeric variables with an 80/20 train-test split and 10-fold cross-validation, achieved an accuracy of 50.9%. It struggled particularly with identifying medium-risk school districts while performing better at predicting low-risk and high-risk districts. The second LDA model, using the same data split and cross-validation strategy but restricted to 12 numeric predictors selected to maximize the Adjusted R-squared value, produced similar results. Its accuracy was 49%, and it also underperformed in classifying medium-risk districts. Lastly, the QDA model, trained with the same approach, performed the worst, with an accuracy of 44%. The confusion matrix indicated that predictions were heavily biased toward the low-risk category, resulting in the misclassification of most medium- and high-risk schools.
 
@@ -60,7 +60,7 @@ Initially, the team fit logistic regression models to predict high absenteeism, 
 
 For the self-defined absenteeism threshold, the logistic regression model’s test set accuracy increased from 69.2% to 71.4%, and the AUC improved from 0.72 to 0.76, indicating stronger overall discrimination between high and low absenteeism districts. Sensitivity increased from 45.7% to 53.2%, with only a minor reduction in specificity, suggesting better identification of schools with high absenteeism without sacrificing much in the way of correctly identifying low-absenteeism schools. Similarly, for the DOE-defined threshold, the log-transformed model achieved a test set accuracy of 77.6% (compared to 75.4% pre-transformation) and an AUC improvement from 0.70 to 0.73. Sensitivity rose slightly from 29.0% to 34.5%, while specificity remained high at over 90%, indicating that the model continued to effectively screen out schools not at high risk while modestly improving its ability to detect true high-absenteeism cases.
 
-![ROC Curve using `high_absenteeism_doe` target](../img/logistic-roc.png){width="3.6in"}
+![ROC Curve using `high_absenteeism_doe` target](./img/logistic-roc.png){width="3.6in"}
 
 In both cases, there was an indication of potential issues with complete or quasi-complete separation among the predictors for certain observations. This appeared less extreme after transformation, suggesting improved model stability. Overall, the log transformation meaningfully enhanced model calibration and discrimination, particularly for predictors with heavy-tailed distributions.
 
@@ -68,7 +68,7 @@ In both cases, there was an indication of potential issues with complete or quas
 
 Using the self-defined threshold, the SVM model achieved an overall accuracy of 51%. The model demonstrated strong recall for identifying students with high absenteeism (recall = 0.89) but struggled with detecting low absenteeism cases, where recall was only 0.23. The area under the ROC curve (AUC) was 0.6591, suggesting moderate discriminative ability. Despite the relatively high precision for low-absenteeism students (precision = 0.76), the model’s imbalanced sensitivity across classes indicated a tendency to overpredict high absenteeism. When the DOE-defined threshold was used, model performance improved. Accuracy increased to 65%, and the recall for low-absenteeism students rose to 0.70, while the recall for high-absenteeism students was 0.53. The AUC similarly improved to 0.6642. These results indicate that the DOE-defined threshold offered a more balanced classification between the two groups and provided a slight overall performance gain.
 
-![ROC Curve using `high_absenteeism_doe` target](../img/svm-roc.png){width="3.6in"}
+![ROC Curve using `high_absenteeism_doe` target](./img/svm-roc.png){width="3.6in"}
 
 Alternative kernels were evaluated to investigate model performance further. When switching to the radial basis function (RBF) kernel, the model’s performance deteriorated substantially. Accuracy dropped to 37%, and the AUC score fell to 0.4464, indicating performance worse than random guessing. The model’s recall for low-absenteeism students was particularly poor at just 0.15, suggesting that the RBF kernel was a poor fit for the data under current tuning parameters. Similarly, the polynomial kernel produced extremely poor results. The confusion matrix indicated that the model misclassified nearly all observations, particularly failing to correctly identify low-absenteeism students.
 
@@ -80,13 +80,13 @@ In the binary classification task (predicting whether a district would exhibit h
 
 In the multiclass classification (absenteeism levels as low, medium, or high) the model achieved an overall accuracy of 58%. Class-level performance varied: the model performed best on the low and high absenteeism classes, with F1-scores of 0.65 and 0.63 respectively, while performance on the medium category lagged (F1-score: 0.46). This suggests some difficulty in differentiating medium absenteeism from adjacent categories. Across both tasks, the student poverty ratio emerged as the most important feature, highlighting its strong predictive power for chronic absenteeism risk.
 
-![Feature Importance Results from Random Forest](../img/feature-importance.png){width="4in"}
+![Feature Importance Results from Random Forest](./img/feature-importance.png){width="4in"}
 
 ### Binary Model Confusion Matrices
 
 The following confusion matrices summarize classification performance for each of the six binary models predicting high absenteeism. They highlight each model’s ability to correctly identify both high and low absenteeism districts.
 
-![Confusion matrices for all binary classification models using the `high_absenteeism` target.](../img/all-models-conf-mat.png)
+![Confusion matrices for all binary classification models using the `high_absenteeism` target.](./img/all-models-conf-mat.png)
 
 ## Discussion
 
