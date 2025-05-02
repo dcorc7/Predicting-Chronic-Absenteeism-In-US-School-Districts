@@ -28,7 +28,15 @@ The model's accuracy, precision, recall, and F1 score can all be derived from th
 
 In addition to the accuracy, precision, recall, and F1 score, the model's performance was also assessed using the Area Under the Receiver Operating Characteristic (AUC-ROC) Curve, which was found to be 0.815, as shown in Figure 1. The AUC provides a measure of the model's ability to distinguish between the two classes, high and low absenteeism districts in our case. A value of 0.815 indicates that the model has a strong ability to distinguish the two classes, and a high likelihood of ranking a randomly chosen high absenteeism district higher than a randomly chosen low absenteeism district.
 
+:::{.columns}
+::: {.column width="50%"}
+![Neural Network Binary Confusion Matrix using `high_absenteeism` target](./img/nn-binary-confusion-matrix.png.png){width="3.6in"}
+:::
+
+::: {.column width="50%"}
 ![Neural Network ROC Curve using `high_absenteeism` target](./img/nn-roc.png){width="3.6in"}
+:::
+:::
 
 While the binary classification model displayed a solid performance in predicting absenteeism rates, its ability to identify all high absenteeism districts is limited. Future improvements could focus on enhancing recall, possibly by adjusting the decision threshold or exploring different model architectures, to better detect high absenteeism districts that require intervention.
 
