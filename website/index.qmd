@@ -17,6 +17,6 @@ Previous research primarily used machine learning techniques to predict chronic 
 While these studies have shown the promise of machine learning at the student level, this project shifts the focus to the district level - aiming to predict which school districts are most at risk of high chronic absenteeism and to identify the most influential factors driving these predictions.
 
 
-
+# Github Repository
 
 The Github repository hosting all code for this project can be found [here](https://github.com/dcorc7/Predicting-Chronic-Absenteeism-In-US-School-Districts)
